@@ -32,27 +32,27 @@ function(){
 let rate=rand(100,220)*5;
 let h=rand(16,23);
 let ans=rate*h*8;
-return {q:`Pan/paní Novák odpracoval ${h} dní s hodinovou sazbou ${rate} Kč (8h denně). Vypočítej hrubou mzdu.`,f:[{l:'Hrubá mzda',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Pan/paní Novák odpracoval ${h} dní s hodinovou sazbou ${rate} Kč (8h denně). Vypočítej hrubou mzdu.`,f:[{l:'Hrubá mzda (sazba × dny × 8h)',a:ans,u:'Kč'}],c:'hruba_mzda'};
 },
 function(){
 let rate=rand(120,240)*5;
 let h=rand(80,180);
 let ans=rate*h;
-return {q:`Hodinová sazba ${rate} Kč, odpracováno ${h} hodin. Vypočítej hrubou mzdu.`,f:[{l:'Hrubá mzda',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Hodinová sazba ${rate} Kč, odpracováno ${h} hodin. Vypočítej hrubou mzdu.`,f:[{l:'Hrubá mzda (sazba × hodiny)',a:ans,u:'Kč'}],c:'hruba_mzda'};
 },
 function(){
 let sal=rand(250,600)*100;
 let d=rand(10,22);
 let td=rand(22,23);
 let ans=Math.round(sal/td*d);
-return {q:`Měsíční mzda ${sal} Kč. Odpracováno ${d} dní z ${td}. Vypočítej hrubou mzdu.`,f:[{l:'Hrubá mzda',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Měsíční mzda ${sal} Kč. Odpracováno ${d} dní z ${td}. Vypočítej hrubou mzdu.`,f:[{l:'Hrubá mzda (měsíční / ${td} × ${d})',a:ans,u:'Kč'}],c:'hruba_mzda'};
 },
 function(){
 let sal=rand(300,700)*100;
 let bp=rand(5,25);
 let b=Math.round(sal*bp/100);
 let ans=sal+b;
-return {q:`Základní mzda ${sal} Kč, prémie ${bp} % (${b} Kč). Vypočítej hrubou mzdu.`,f:[{l:'Hrubá mzda',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Základní mzda ${sal} Kč, prémie ${bp} % (${b} Kč). Vypočítej hrubou mzdu.`,f:[{l:'Hrubá mzda (základ + prémie)',a:ans,u:'Kč'}],c:'hruba_mzda'};
 },
 function(){
 let rate=rand(130,260)*5;
@@ -61,7 +61,7 @@ let oh=rand(5,20);
 let zakl=rate*h;
 let prip=Math.round(rate*oh*0.25);
 let ans=zakl+rate*oh+prip;
-return {q:`Odpracováno ${h} hodin + ${oh} hodin přesčasů. Sazba ${rate} Kč/h, přesčas +25 %.`,f:[{l:'Mzda bez přesčasů',a:zakl,u:'Kč'},{l:'Příplatek za přesčas (+25%)',a:prip,u:'Kč'},{l:'Hrubá mzda celkem',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Odpracováno ${h} hodin + ${oh} hodin přesčasů. Sazba ${rate} Kč/h, přesčas +25 %.`,f:[{l:'Mzda bez přesčasů (sazba × ${h}h)',a:zakl,u:'Kč'},{l:'Příplatek za přesčas (+25 % z ${rate} Kč × ${oh}h)',a:prip,u:'Kč'},{l:'Hrubá mzda celkem',a:ans,u:'Kč'}],c:'hruba_mzda'};
 },
 function(){
 let rate=rand(120,200)*5;
@@ -71,7 +71,7 @@ let zakl=rate*h;
 let pres=rate*oh;
 let prip=Math.round(rate*oh*0.25);
 let ans=zakl+pres+prip;
-return {q:`Sazba ${rate} Kč/h, ${h} řádných hodin, ${oh} přesčasových (+25 %).`,f:[{l:'Mzda za řádnou práci',a:zakl,u:'Kč'},{l:'Mzda za přesčas + 25 %',a:pres+prip,u:'Kč'},{l:'Hrubá mzda celkem',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Sazba ${rate} Kč/h, ${h} řádných hodin, ${oh} přesčasových (+25 %).`,f:[{l:'Mzda za řádnou práci (${rate} × ${h})',a:zakl,u:'Kč'},{l:'Přesčasy + 25 % (${rate} × ${oh} × 1,25)',a:pres+prip,u:'Kč'},{l:'Hrubá mzda celkem',a:ans,u:'Kč'}],c:'hruba_mzda'};
 },
 function(){
 let rate=rand(140,280)*5;
@@ -82,7 +82,7 @@ let zakl=rate*std;
 let pres=rate*ov;
 let prip=Math.round(rate*ov*0.25);
 let ans=zakl+pres+prip+bon;
-return {q:`Sazba ${rate} Kč/h, ${std} hodin, ${ov} hodin přesčas (+25 %), odměna ${bon} Kč.`,f:[{l:'Mzda za řádnou práci',a:zakl,u:'Kč'},{l:'Přesčasy vč. příplatku',a:pres+prip,u:'Kč'},{l:'Odměna',a:bon,u:'Kč'},{l:'Hrubá mzda celkem',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Sazba ${rate} Kč/h, ${std} hodin, ${ov} hodin přesčas (+25 %), odměna ${bon} Kč.`,f:[{l:'Řádná mzda (${rate} × ${std})',a:zakl,u:'Kč'},{l:'Přesčasy vč. +25 % (${rate} × ${ov} × 1,25)',a:pres+prip,u:'Kč'},{l:'Odměna',a:bon,u:'Kč'},{l:'Hrubá mzda celkem',a:ans,u:'Kč'}],c:'hruba_mzda'};
 }
 ];
 
@@ -94,7 +94,7 @@ let soc=Math.round(g*0.071);
 let zdr=Math.round(g*0.045);
 let d=Math.round(g*0.15)-2570; if(d<0)d=0;
 let c=g-soc-zdr-d;
-return {q:`Hrubá mzda ${g} Kč. Vypočítej čistou mzdu.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:'Sociální pojištění (7,1 %)',a:soc,u:'Kč'},{l:'Zdravotní pojištění (4,5 %)',a:zdr,u:'Kč'},{l:'Daň po slevě (15 % - 2570)',a:d,u:'Kč'},{l:'Čistá mzda',a:c,u:'Kč'}],c:'cista_mzda'};
+return {q:`Hrubá mzda ${g} Kč. Vypočítej čistou mzdu.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570 sleva)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'}],c:'cista_mzda'};
 },
 function(){
 let g=rand(200,400)*100;
@@ -102,7 +102,7 @@ let soc=Math.round(g*0.071);
 let zdr=Math.round(g*0.045);
 let d=Math.round(g*0.15)-2570; if(d<0)d=0;
 let c=g-soc-zdr-d;
-return {q:`Hrubá mzda ${g} Kč. Vypočítej čistou mzdu.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:'Sociální pojištění (7,1 %)',a:soc,u:'Kč'},{l:'Zdravotní pojištění (4,5 %)',a:zdr,u:'Kč'},{l:'Daň po slevě (15 % - 2570)',a:d,u:'Kč'},{l:'Čistá mzda',a:c,u:'Kč'}],c:'cista_mzda'};
+return {q:`Hrubá mzda ${g} Kč. Vypočítej čistou mzdu.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570 sleva)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'}],c:'cista_mzda'};
 },
 function(){
 let g=rand(280,600)*100;
@@ -110,7 +110,7 @@ let soc=Math.round(g*0.071);
 let zdr=Math.round(g*0.045);
 let d=Math.round(g*0.15)-2570; if(d<0)d=0;
 let c=g-soc-zdr-d;
-return {q:`Hrubá mzda ${g} Kč. Vypočítej čistou mzdu.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:'Sociální pojištění (7,1 %)',a:soc,u:'Kč'},{l:'Zdravotní pojištění (4,5 %)',a:zdr,u:'Kč'},{l:'Daň po slevě (15 % - 2570)',a:d,u:'Kč'},{l:'Čistá mzda',a:c,u:'Kč'}],c:'cista_mzda'};
+return {q:`Hrubá mzda ${g} Kč. Vypočítej čistou mzdu.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570 sleva)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'}],c:'cista_mzda'};
 },
 function(){
 let g=rand(300,700)*100;
@@ -119,7 +119,7 @@ let soc=Math.round(g*0.071);
 let zdr=Math.round(g*0.045);
 let d=Math.round(g*0.15)-sv; if(d<0)d=0;
 let c=g-soc-zdr-d;
-return {q:`Hrubá mzda ${g} Kč, sleva na dani ${sv} Kč. SP 7,1 %, ZP 4,5 %, daň 15 %.`,f:[{l:'Sociální pojištění (7,1 %)',a:soc,u:'Kč'},{l:'Zdravotní pojištění (4,5 %)',a:zdr,u:'Kč'},{l:'Daň po slevě (15 - '+sv+')',a:d,u:'Kč'},{l:'Čistá mzda',a:c,u:'Kč'}],c:'cista_mzda'};
+return {q:`Hrubá mzda ${g} Kč, sleva na dani ${sv} Kč. SP 7,1 %, ZP 4,5 %, daň 15 %.`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − ${sv})',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'}],c:'cista_mzda'};
 },
 function(){
 let g=rand(220,450)*100;
@@ -127,7 +127,7 @@ let soc=Math.round(g*0.071);
 let zdr=Math.round(g*0.045);
 let d=Math.round(g*0.15)-2570; if(d<0)d=0;
 let c=g-soc-zdr-d;
-return {q:`Pan Malý má hrubou mzdu ${g} Kč. Vypočítej čistou mzdu (SP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570).`,f:[{l:'Sociální pojištění (7,1 %)',a:soc,u:'Kč'},{l:'Zdravotní pojištění (4,5 %)',a:zdr,u:'Kč'},{l:'Daň po slevě (15 %)',a:d,u:'Kč'},{l:'Čistá mzda',a:c,u:'Kč'}],c:'cista_mzda'};
+return {q:`Pan Malý má hrubou mzdu ${g} Kč. Vypočítej čistou mzdu (SP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570).`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'}],c:'cista_mzda'};
 }
 ];
 
@@ -141,7 +141,7 @@ let d=Math.round(g*0.15)-2570; if(d<0)d=0;
 let c=g-soc-zdr-d;
 let za=rand(1000,5000);
 let vys=c-za;
-return {q:`Hrubá mzda ${g} Kč, záloha ${za} Kč. Vypočítej částku k výplatě.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:'Sociální pojištění (7,1 %)',a:soc,u:'Kč'},{l:'Zdravotní pojištění (4,5 %)',a:zdr,u:'Kč'},{l:'Daň po slevě (15 %)',a:d,u:'Kč'},{l:'Čistá mzda',a:c,u:'Kč'},{l:'Záloha',a:za,u:'Kč'},{l:'Částka k výplatě',a:vys,u:'Kč'}],c:'castka_k_vyplate'};
+return {q:`Hrubá mzda ${g} Kč, záloha ${za} Kč. Vypočítej částku k výplatě.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'},{l:'Záloha (odečíst)',a:za,u:'Kč'},{l:'Částka k výplatě (čistá − záloha)',a:vys,u:'Kč'}],c:'castka_k_vyplate'};
 },
 function(){
 let g=rand(220,480)*100;
@@ -153,7 +153,7 @@ let str=rand(500,2000);
 let puj=rand(1000,4000);
 let sraz=str+puj;
 let vys=c-sraz;
-return {q:`Hrubá mzda ${g} Kč.\nSrážky: stravenky ${str} Kč, půjčka ${puj} Kč.\nVypočítej částku k výplatě.\n(SP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570)`,f:[{l:'Sociální pojištění (7,1 %)',a:soc,u:'Kč'},{l:'Zdravotní pojištění (4,5 %)',a:zdr,u:'Kč'},{l:'Daň po slevě (15 %)',a:d,u:'Kč'},{l:'Čistá mzda',a:c,u:'Kč'},{l:'Srážky celkem',a:sraz,u:'Kč'},{l:'Částka k výplatě',a:vys,u:'Kč'}],c:'castka_k_vyplate'};
+return {q:`Hrubá mzda ${g} Kč.\nSrážky: stravenky ${str} Kč, půjčka ${puj} Kč.\nVypočítej částku k výplatě.\n(SP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570)`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'},{l:'Srážky celkem (stravenky + půjčka)',a:sraz,u:'Kč'},{l:'Částka k výplatě (čistá − srážky)',a:vys,u:'Kč'}],c:'castka_k_vyplate'};
 },
 function(){
 let g=rand(280,520)*100;
@@ -165,13 +165,13 @@ let sp=rand(1000,3000);
 let poj=rand(300,1200);
 let sraz=sp+poj;
 let vys=c-sraz;
-return {q:`Hrubá mzda ${g} Kč.\nSrážky: spoření ${sp} Kč, pojištění ${poj} Kč.\nVypočítej částku k výplatě.\n(SP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570)`,f:[{l:'Sociální pojištění (7,1 %)',a:soc,u:'Kč'},{l:'Zdravotní pojištění (4,5 %)',a:zdr,u:'Kč'},{l:'Daň po slevě (15 %)',a:d,u:'Kč'},{l:'Čistá mzda',a:c,u:'Kč'},{l:'Srážky celkem',a:sraz,u:'Kč'},{l:'Částka k výplatě',a:vys,u:'Kč'}],c:'castka_k_vyplate'};
+return {q:`Hrubá mzda ${g} Kč.\nSrážky: spoření ${sp} Kč, pojištění ${poj} Kč.\nVypočítej částku k výplatě.\n(SP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570)`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'},{l:'Srážky celkem (spoření + pojištění)',a:sraz,u:'Kč'},{l:'Částka k výplatě (čistá − srážky)',a:vys,u:'Kč'}],c:'castka_k_vyplate'};
 },
 function(){
 let c=rand(200,500)*100;
 let ex=rand(2000,8000);
 let vys=c-ex;
-return {q:`Čistá mzda zaměstnance je ${c} Kč. Má exekuční srážku ${ex} Kč. Kolik dostane k výplatě?`,f:[{l:'Čistá mzda',a:c,u:'Kč'},{l:'Exekuční srážka',a:ex,u:'Kč'},{l:'Částka k výplatě',a:vys,u:'Kč'}],c:'castka_k_vyplate'};
+return {q:`Čistá mzda zaměstnance je ${c} Kč. Má exekuční srážku ${ex} Kč. Kolik dostane k výplatě?`,f:[{l:'Čistá mzda (vstup)',a:c,u:'Kč'},{l:'Exekuční srážka',a:ex,u:'Kč'},{l:'Částka k výplatě (čistá − exekuce)',a:vys,u:'Kč'}],c:'castka_k_vyplate'};
 }
 ];
 
@@ -181,26 +181,26 @@ function(){
 let d=rand(800,2500);
 let dni=rand(1,20);
 let ans=d*dni;
-return {q:`Průměrný denní výdělek ${d} Kč. Dovolená ${dni} dní. Vypočítej náhradu mzdy.`,f:[{l:'Náhrada mzdy',a:ans,u:'Kč'}],c:'dovolena'};
+return {q:`Průměrný denní výdělek ${d} Kč. Dovolená ${dni} dní. Vypočítej náhradu mzdy.`,f:[{l:'Náhrada mzdy (denní výdělek × dny)',a:ans,u:'Kč'}],c:'dovolena'};
 },
 function(){
 let h=rand(120,300);
 let hod=rand(8,80);
 let ans=h*hod;
-return {q:`Průměrný hodinový výdělek ${h} Kč. Dovolená ${hod} hodin. Vypočítej náhradu.`,f:[{l:'Náhrada mzdy',a:ans,u:'Kč'}],c:'dovolena'};
+return {q:`Průměrný hodinový výdělek ${h} Kč. Dovolená ${hod} hodin. Vypočítej náhradu.`,f:[{l:'Náhrada mzdy (hod. výdělek × hodiny)',a:ans,u:'Kč'}],c:'dovolena'};
 },
 function(){
 let m=rand(300,600)*100;
 let dd=Math.round(m/22);
 let dni=rand(1,25);
 let ans=dd*dni;
-return {q:`Měsíční mzda ${m} Kč. Dovolená ${dni} dní. Prům. denní výdělek = ${m} / 22 = ${dd} Kč. Náhrada?`,f:[{l:'Náhrada mzdy',a:ans,u:'Kč'}],c:'dovolena'};
+return {q:`Měsíční mzda ${m} Kč. Dovolená ${dni} dní. Prům. denní výdělek = ${m} / 22 = ${dd} Kč. Náhrada?`,f:[{l:'Náhrada mzdy (${dd} × ${dni} dní)',a:ans,u:'Kč'}],c:'dovolena'};
 },
 function(){
 let h=rand(130,280);
 let dni=rand(1,15);
 let ans=h*dni*8;
-return {q:`Průměrný hodinový výdělek ${h} Kč. Dovolená ${dni} dní (8h/den). Vypočítej náhradu.`,f:[{l:'Náhrada mzdy',a:ans,u:'Kč'}],c:'dovolena'};
+return {q:`Průměrný hodinový výdělek ${h} Kč. Dovolená ${dni} dní (8h/den). Vypočítej náhradu.`,f:[{l:'Náhrada mzdy (${h} × ${dni} × 8h)',a:ans,u:'Kč'}],c:'dovolena'};
 },
 function(){
 let d=rand(900,2200);
@@ -208,7 +208,7 @@ let dni=rand(2,10);
 let ms=rand(3,12);
 let nar=Math.max(1,Math.round(dni/12*ms));
 let ans=d*nar;
-return {q:`Roční nárok ${dni} dní. Odpracováno ${ms} měsíců → nárok na ${nar} dní. Denní průměr ${d} Kč. Náhrada?`,f:[{l:'Náhrada mzdy',a:ans,u:'Kč'}],c:'dovolena'};
+return {q:`Roční nárok ${dni} dní. Odpracováno ${ms} měsíců → nárok na ${nar} dní. Denní průměr ${d} Kč. Náhrada?`,f:[{l:'Náhrada mzdy (denní × nárok)',a:ans,u:'Kč'}],c:'dovolena'};
 }
 ];
 
@@ -219,28 +219,28 @@ let dvz=rand(800,2500);
 let dni=rand(1,14);
 let den=Math.round(dvz*0.6);
 let ans=den*dni;
-return {q:`DVZ ${dvz} Kč. Nemoc ${dni} dní (60 %). Vypočítej náhradu.`,f:[{l:'Denní náhrada (60 %)',a:den,u:'Kč'},{l:'Náhrada celkem',a:ans,u:'Kč'}],c:'nemocenska'};
+return {q:`DVZ ${dvz} Kč. Nemoc ${dni} dní (60 %). Vypočítej náhradu.`,f:[{l:'Denní náhrada (60 % z DVZ = ${dvz} × 60 %)',a:den,u:'Kč'},{l:'Náhrada celkem (denní × ${dni} dní)',a:ans,u:'Kč'}],c:'nemocenska'};
 },
 function(){
 let dvz=rand(900,2400);
 let dni=rand(1,30);
 let den=Math.round(dvz*0.6);
 let ans=den*dni;
-return {q:`DVZ ${dvz} Kč. Nemoc ${dni} dní. Náhrada 60 %. Vypočítej.`,f:[{l:'Denní náhrada (60 %)',a:den,u:'Kč'},{l:'Náhrada celkem',a:ans,u:'Kč'}],c:'nemocenska'};
+return {q:`DVZ ${dvz} Kč. Nemoc ${dni} dní. Náhrada 60 %. Vypočítej.`,f:[{l:'Denní náhrada (60 % z DVZ)',a:den,u:'Kč'},{l:'Náhrada celkem (denní × ${dni})',a:ans,u:'Kč'}],c:'nemocenska'};
 },
 function(){
 let dvz=rand(700,2000);
 let dni=rand(3,14);
 let den=Math.round(dvz*0.6);
 let ans=den*dni;
-return {q:`Redukovaný DVZ ${dvz} Kč. Nemoc ${dni} dní, 60 %. Náhrada?`,f:[{l:'Denní náhrada (60 %)',a:den,u:'Kč'},{l:'Náhrada celkem',a:ans,u:'Kč'}],c:'nemocenska'};
+return {q:`Redukovaný DVZ ${dvz} Kč. Nemoc ${dni} dní, 60 %. Náhrada?`,f:[{l:'Denní náhrada (60 % z DVZ)',a:den,u:'Kč'},{l:'Náhrada celkem (denní × ${dni})',a:ans,u:'Kč'}],c:'nemocenska'};
 },
 function(){
 let dvz=rand(1000,2600);
 let dni=rand(5,10);
 let den=Math.round(dvz*0.6);
 let ans=den*dni;
-return {q:`DVZ = ${dvz} Kč. Nemocenská 60 %, ${dni} dní.`,f:[{l:'Denní náhrada (60 %)',a:den,u:'Kč'},{l:'Náhrada celkem',a:ans,u:'Kč'}],c:'nemocenska'};
+return {q:`DVZ = ${dvz} Kč. Nemocenská 60 %, ${dni} dní.`,f:[{l:'Denní náhrada (60 % z DVZ)',a:den,u:'Kč'},{l:'Náhrada celkem (denní × ${dni})',a:ans,u:'Kč'}],c:'nemocenska'};
 }
 ];
 
@@ -250,7 +250,7 @@ function(){
 let g=rand(250,500)*100;
 let p=rand(5,15);
 let ans=Math.round(g*p/100);
-return {q:`Hrubá mzda ${g} Kč, příplatek ${p} % za stížené podmínky. Vypočítej příplatek.`,f:[{l:'Příplatek',a:ans,u:'Kč'}],c:'stizene_podminky'};
+return {q:`Hrubá mzda ${g} Kč, příplatek ${p} % za stížené podmínky. Vypočítej příplatek.`,f:[{l:'Příplatek (${p} % z ${g} Kč)',a:ans,u:'Kč'}],c:'stizene_podminky'};
 },
 function(){
 let hod=rand(140,280);
@@ -258,20 +258,20 @@ let h=rand(80,160);
 let p=rand(5,20);
 let g=hod*h;
 let ans=Math.round(g*p/100);
-return {q:`Sazba ${hod} Kč/h, ${h} hodin, příplatek ${p} %. Vypočítej příplatek.`,f:[{l:'Hrubá mzda',a:g,u:'Kč'},{l:'Příplatek',a:ans,u:'Kč'}],c:'stizene_podminky'};
+return {q:`Sazba ${hod} Kč/h, ${h} hodin, příplatek ${p} %. Vypočítej příplatek.`,f:[{l:'Hrubá mzda (základ, bez příplatku)',a:g,u:'Kč'},{l:'Příplatek (${p} % z hrubé mzdy)',a:ans,u:'Kč'}],c:'stizene_podminky'};
 },
 function(){
 let g=rand(300,600)*100;
 let p=rand(8,18);
 let ans=Math.round(g*p/100);
-return {q:`Hrubá mzda ${g} Kč, příplatek ${p} % za rizikové pracoviště. Příplatek?`,f:[{l:'Příplatek',a:ans,u:'Kč'}],c:'stizene_podminky'};
+return {q:`Hrubá mzda ${g} Kč, příplatek ${p} % za rizikové pracoviště. Příplatek?`,f:[{l:'Příplatek (${p} % z hrubé mzdy)',a:ans,u:'Kč'}],c:'stizene_podminky'};
 },
 function(){
 let g=rand(200,450)*100;
 let p1=rand(5,10);
 let p2=rand(5,10);
 let ans=Math.round(g*(p1+p2)/100);
-return {q:`Hrubá mzda ${g} Kč. Příplatek ${p1} % (hluk) + ${p2} % (prašnost). Celkový příplatek?`,f:[{l:'Příplatek za hluk',a:Math.round(g*p1/100),u:'Kč'},{l:'Příplatek za prašnost',a:Math.round(g*p2/100),u:'Kč'},{l:'Příplatek celkem',a:ans,u:'Kč'}],c:'stizene_podminky'};
+return {q:`Hrubá mzda ${g} Kč. Příplatek ${p1} % (hluk) + ${p2} % (prašnost). Celkový příplatek?`,f:[{l:'Příplatek za hluk (${p1} % z ${g})',a:Math.round(g*p1/100),u:'Kč'},{l:'Příplatek za prašnost (${p2} % z ${g})',a:Math.round(g*p2/100),u:'Kč'},{l:'Příplatek celkem',a:ans,u:'Kč'}],c:'stizene_podminky'};
 },
 function(){
 let hod=rand(130,250);
@@ -279,13 +279,13 @@ let h=rand(140,180);
 let g=hod*h;
 let p=rand(10,25);
 let ans=Math.round(g*p/100);
-return {q:`Sazba ${hod} Kč/h, ${h} hodin, příplatek ${p} % za ztížené podmínky.`,f:[{l:'Hrubá mzda',a:g,u:'Kč'},{l:'Příplatek',a:ans,u:'Kč'}],c:'stizene_podminky'};
+return {q:`Sazba ${hod} Kč/h, ${h} hodin, příplatek ${p} % za ztížené podmínky.`,f:[{l:'Hrubá mzda (základ, bez příplatku)',a:g,u:'Kč'},{l:'Příplatek (${p} % z hrubé)',a:ans,u:'Kč'}],c:'stizene_podminky'};
 },
 function(){
 let g=rand(250,550)*100;
 let p=rand(5,15);
 let ans=Math.round(g*p/100);
-return {q:`Hrubá mzda ${g} Kč. Práce ve výškách - příplatek ${p} %. Kolik navíc?`,f:[{l:'Příplatek',a:ans,u:'Kč'}],c:'stizene_podminky'};
+return {q:`Hrubá mzda ${g} Kč. Práce ve výškách - příplatek ${p} %. Kolik navíc?`,f:[{l:'Příplatek (${p} % z ${g})',a:ans,u:'Kč'}],c:'stizene_podminky'};
 }
 ];
 
