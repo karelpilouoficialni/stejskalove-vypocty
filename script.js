@@ -459,12 +459,6 @@ showResults();
 
 // ===== INIT GAME =====
 function initGame(){
-const selected=[...catBtns].filter(b=>b.classList.contains('selected')).map(b=>b.dataset.cat);
-if(selected.length===0){
-startBtn.classList.add('shake');
-setTimeout(()=>startBtn.classList.remove('shake'),600);
-return;
-}
 const tb=document.querySelector('.time-btn.selected');
 state.timeLimit=parseInt(tb.dataset.time);
 state.timeLeft=state.timeLimit;
@@ -499,7 +493,6 @@ showWelcome();
 }
 
 // ===== EVENT LISTENERS =====
-startBtn.addEventListener('click',initGame);
 restartBtn.addEventListener('click',showWelcome);
 backBtn.addEventListener('click',backToMenu);
 submitBtn.addEventListener('click',checkAnswer);
@@ -572,4 +565,5 @@ else{b+=val;display.textContent=a+' '+op+' '+b;}
 })();
 
 // ===== START =====
+console.log('script.js v4 loaded');
 showWelcome();

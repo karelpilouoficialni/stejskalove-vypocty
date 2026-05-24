@@ -21,13 +21,13 @@
 <div class="welcome-sub">Vyber, co chceš procvičovat, a začni hrát!</div>
 
 <div class="cat-grid" id="categoryGrid">
-<button class="cat-btn all-btn selected" data-cat="all"><span class="cat-icon">📋</span> Všechny kategorie</button>
-<button class="cat-btn selected" data-cat="hruba_mzda"><span class="cat-icon">💰</span> Hrubá mzda</button>
-<button class="cat-btn selected" data-cat="cista_mzda"><span class="cat-icon">🧾</span> Čistá mzda</button>
-<button class="cat-btn selected" data-cat="castka_k_vyplate"><span class="cat-icon">💳</span> Částka k výplatě</button>
-<button class="cat-btn selected" data-cat="dovolena"><span class="cat-icon">🏖️</span> Dovolená</button>
-<button class="cat-btn selected" data-cat="nemocenska"><span class="cat-icon">🤒</span> Nemocenská</button>
-<button class="cat-btn selected" data-cat="stizene_podminky"><span class="cat-icon">⚠️</span> Stížené pracovní podmínky</button>
+<button class="cat-btn all-btn" data-cat="all"><span class="cat-icon">📋</span> Všechny kategorie</button>
+<button class="cat-btn" data-cat="hruba_mzda"><span class="cat-icon">💰</span> Hrubá mzda</button>
+<button class="cat-btn" data-cat="cista_mzda"><span class="cat-icon">🧾</span> Čistá mzda</button>
+<button class="cat-btn" data-cat="castka_k_vyplate"><span class="cat-icon">💳</span> Částka k výplatě</button>
+<button class="cat-btn" data-cat="dovolena"><span class="cat-icon">🏖️</span> Dovolená</button>
+<button class="cat-btn" data-cat="nemocenska"><span class="cat-icon">🤒</span> Nemocenská</button>
+<button class="cat-btn" data-cat="stizene_podminky"><span class="cat-icon">⚠️</span> Stížené pracovní podmínky</button>
 </div>
 
 <div class="time-row">
@@ -48,7 +48,7 @@
 </div>
 </div>
 
-<button class="start-btn" id="startBtn">Začít hru!</button>
+<button class="start-btn" id="startBtn" onclick="var b=this;if(document.querySelectorAll('.cat-btn:not(.all-btn).selected').length===0){b.classList.add('shake');b.textContent='❌ Vyber alespoň jednu kategorii!';setTimeout(function(){b.classList.remove('shake');},1000);setTimeout(function(){b.textContent='Začít hru!';},2000);return false}initGame()">Začít hru!</button>
 </div>
 
 <!-- GAME SCREEN -->
@@ -133,6 +133,6 @@ Načítání otázky...
 </div>
 </div>
 
-<script src="script.js?v=2"></script>
+<script src="script.js?v=7"></script>
 </body>
 </html>
