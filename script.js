@@ -32,27 +32,27 @@ function(){
 let rate=rand(100,220)*5;
 let h=rand(16,23);
 let ans=rate*h*8;
-return {q:`Pan/paní Novák odpracoval ${h} dní s hodinovou sazbou ${rate} Kč (8h denně). Vypočítej hrubou mzdu.`,f:[{l:'Hrubá mzda (sazba × dny × 8h)',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Pan/paní Novák odpracoval ${h} dní s hodinovou sazbou ${rate} Kč (8h denně). Vypočítej hrubou mzdu.`,f:[{l:`Hrubá mzda (sazba × dny × 8h)`,a:ans,u:'Kč'}],c:'hruba_mzda'};
 },
 function(){
 let rate=rand(120,240)*5;
 let h=rand(80,180);
 let ans=rate*h;
-return {q:`Hodinová sazba ${rate} Kč, odpracováno ${h} hodin. Vypočítej hrubou mzdu.`,f:[{l:'Hrubá mzda (sazba × hodiny)',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Hodinová sazba ${rate} Kč, odpracováno ${h} hodin. Vypočítej hrubou mzdu.`,f:[{l:`Hrubá mzda (sazba × hodiny)`,a:ans,u:'Kč'}],c:'hruba_mzda'};
 },
 function(){
 let sal=rand(250,600)*100;
 let d=rand(10,22);
 let td=rand(22,23);
 let ans=Math.round(sal/td*d);
-return {q:`Měsíční mzda ${sal} Kč. Odpracováno ${d} dní z ${td}. Vypočítej hrubou mzdu.`,f:[{l:'Hrubá mzda (měsíční / ${td} × ${d})',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Měsíční mzda ${sal} Kč. Odpracováno ${d} dní z ${td}. Vypočítej hrubou mzdu.`,f:[{l:`Hrubá mzda (měsíční / ${td} × ${d})`,a:ans,u:'Kč'}],c:'hruba_mzda'};
 },
 function(){
 let sal=rand(300,700)*100;
 let bp=rand(5,25);
 let b=Math.round(sal*bp/100);
 let ans=sal+b;
-return {q:`Základní mzda ${sal} Kč, prémie ${bp} % (${b} Kč). Vypočítej hrubou mzdu.`,f:[{l:'Hrubá mzda (základ + prémie)',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Základní mzda ${sal} Kč, prémie ${bp} % (${b} Kč). Vypočítej hrubou mzdu.`,f:[{l:`Hrubá mzda (základ + prémie)`,a:ans,u:'Kč'}],c:'hruba_mzda'};
 },
 function(){
 let rate=rand(130,260)*5;
@@ -61,7 +61,7 @@ let oh=rand(5,20);
 let zakl=rate*h;
 let prip=Math.round(rate*oh*0.25);
 let ans=zakl+rate*oh+prip;
-return {q:`Odpracováno ${h} hodin + ${oh} hodin přesčasů. Sazba ${rate} Kč/h, přesčas +25 %.`,f:[{l:'Mzda bez přesčasů (sazba × ${h}h)',a:zakl,u:'Kč'},{l:'Příplatek za přesčas (+25 % z ${rate} Kč × ${oh}h)',a:prip,u:'Kč'},{l:'Hrubá mzda celkem',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Odpracováno ${h} hodin + ${oh} hodin přesčasů. Sazba ${rate} Kč/h, přesčas +25 %.`,f:[{l:`Mzda bez přesčasů (sazba × ${h}h)`,a:zakl,u:'Kč'},{l:`Příplatek za přesčas (+25 % z ${rate} Kč × ${oh}h)`,a:prip,u:'Kč'},{l:`Hrubá mzda celkem`,a:ans,u:'Kč'}],c:'hruba_mzda'};
 },
 function(){
 let rate=rand(120,200)*5;
@@ -71,7 +71,7 @@ let zakl=rate*h;
 let pres=rate*oh;
 let prip=Math.round(rate*oh*0.25);
 let ans=zakl+pres+prip;
-return {q:`Sazba ${rate} Kč/h, ${h} řádných hodin, ${oh} přesčasových (+25 %).`,f:[{l:'Mzda za řádnou práci (${rate} × ${h})',a:zakl,u:'Kč'},{l:'Přesčasy + 25 % (${rate} × ${oh} × 1,25)',a:pres+prip,u:'Kč'},{l:'Hrubá mzda celkem',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Sazba ${rate} Kč/h, ${h} řádných hodin, ${oh} přesčasových (+25 %).`,f:[{l:`Mzda za řádnou práci (${rate} × ${h})`,a:zakl,u:'Kč'},{l:`Přesčasy + 25 % (${rate} × ${oh} × 1,25)`,a:pres+prip,u:'Kč'},{l:`Hrubá mzda celkem`,a:ans,u:'Kč'}],c:'hruba_mzda'};
 },
 function(){
 let rate=rand(140,280)*5;
@@ -82,7 +82,7 @@ let zakl=rate*std;
 let pres=rate*ov;
 let prip=Math.round(rate*ov*0.25);
 let ans=zakl+pres+prip+bon;
-return {q:`Sazba ${rate} Kč/h, ${std} hodin, ${ov} hodin přesčas (+25 %), odměna ${bon} Kč.`,f:[{l:'Řádná mzda (${rate} × ${std})',a:zakl,u:'Kč'},{l:'Přesčasy vč. +25 % (${rate} × ${ov} × 1,25)',a:pres+prip,u:'Kč'},{l:'Odměna',a:bon,u:'Kč'},{l:'Hrubá mzda celkem',a:ans,u:'Kč'}],c:'hruba_mzda'};
+return {q:`Sazba ${rate} Kč/h, ${std} hodin, ${ov} hodin přesčas (+25 %), odměna ${bon} Kč.`,f:[{l:`Řádná mzda (${rate} × ${std})`,a:zakl,u:'Kč'},{l:`Přesčasy vč. +25 % (${rate} × ${ov} × 1,25)`,a:pres+prip,u:'Kč'},{l:`Odměna`,a:bon,u:'Kč'},{l:`Hrubá mzda celkem`,a:ans,u:'Kč'}],c:'hruba_mzda'};
 }
 ];
 
@@ -94,7 +94,7 @@ let soc=Math.round(g*0.071);
 let zdr=Math.round(g*0.045);
 let d=Math.round(g*0.15)-2570; if(d<0)d=0;
 let c=g-soc-zdr-d;
-return {q:`Hrubá mzda ${g} Kč. Vypočítej čistou mzdu.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570 sleva)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'}],c:'cista_mzda'};
+return {q:`Hrubá mzda ${g} Kč. Vypočítej čistou mzdu.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:`SP (7,1 % z hrubé)`,a:soc,u:'Kč'},{l:`ZP (4,5 % z hrubé)`,a:zdr,u:'Kč'},{l:`Daň (15 % z hrubé − 2570 sleva)`,a:d,u:'Kč'},{l:`Čistá mzda (hrubá − SP − ZP − daň)`,a:c,u:'Kč'}],c:'cista_mzda'};
 },
 function(){
 let g=rand(200,400)*100;
@@ -102,7 +102,7 @@ let soc=Math.round(g*0.071);
 let zdr=Math.round(g*0.045);
 let d=Math.round(g*0.15)-2570; if(d<0)d=0;
 let c=g-soc-zdr-d;
-return {q:`Hrubá mzda ${g} Kč. Vypočítej čistou mzdu.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570 sleva)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'}],c:'cista_mzda'};
+return {q:`Hrubá mzda ${g} Kč. Vypočítej čistou mzdu.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:`SP (7,1 % z hrubé)`,a:soc,u:'Kč'},{l:`ZP (4,5 % z hrubé)`,a:zdr,u:'Kč'},{l:`Daň (15 % z hrubé − 2570 sleva)`,a:d,u:'Kč'},{l:`Čistá mzda (hrubá − SP − ZP − daň)`,a:c,u:'Kč'}],c:'cista_mzda'};
 },
 function(){
 let g=rand(280,600)*100;
@@ -110,168 +110,110 @@ let soc=Math.round(g*0.071);
 let zdr=Math.round(g*0.045);
 let d=Math.round(g*0.15)-2570; if(d<0)d=0;
 let c=g-soc-zdr-d;
-return {q:`Hrubá mzda ${g} Kč. Vypočítej čistou mzdu.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570 sleva)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'}],c:'cista_mzda'};
-},
-function(){
-let g=rand(300,700)*100;
-let sv=rand(1000,3000);
-let soc=Math.round(g*0.071);
-let zdr=Math.round(g*0.045);
-let d=Math.round(g*0.15)-sv; if(d<0)d=0;
-let c=g-soc-zdr-d;
-return {q:`Hrubá mzda ${g} Kč, sleva na dani ${sv} Kč. SP 7,1 %, ZP 4,5 %, daň 15 %.`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − ${sv})',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'}],c:'cista_mzda'};
-},
-function(){
-let g=rand(220,450)*100;
-let soc=Math.round(g*0.071);
-let zdr=Math.round(g*0.045);
-let d=Math.round(g*0.15)-2570; if(d<0)d=0;
-let c=g-soc-zdr-d;
-return {q:`Pan Malý má hrubou mzdu ${g} Kč. Vypočítej čistou mzdu (SP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570).`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'}],c:'cista_mzda'};
+return {q:`Hrubá mzda ${g} Kč. Vypočítej čistou mzdu.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:`SP (7,1 % z hrubé)`,a:soc,u:'Kč'},{l:`ZP (4,5 % z hrubé)`,a:zdr,u:'Kč'},{l:`Daň (15 % z hrubé − 2570 sleva)`,a:d,u:'Kč'},{l:`Čistá mzda (hrubá − SP − ZP − daň)`,a:c,u:'Kč'}],c:'cista_mzda'};
 }
 ];
 
 // ---- ČÁSTKA K VÝPLATĚ ----
 generators.castka_k_vyplate = [
 function(){
-let g=rand(250,500)*100;
+let g=rand(250,550)*100;
 let soc=Math.round(g*0.071);
 let zdr=Math.round(g*0.045);
 let d=Math.round(g*0.15)-2570; if(d<0)d=0;
 let c=g-soc-zdr-d;
-let za=rand(1000,5000);
-let vys=c-za;
-return {q:`Hrubá mzda ${g} Kč, záloha ${za} Kč. Vypočítej částku k výplatě.\nSP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570 Kč.`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'},{l:'Záloha (odečíst)',a:za,u:'Kč'},{l:'Částka k výplatě (čistá − záloha)',a:vys,u:'Kč'}],c:'castka_k_vyplate'};
+let ss=soc+zdr+d;
+return {q:`Hrubá mzda ${g} Kč.\nVypočítej všechny srážky a částku k výplatě.`,f:[{l:`SP (7,1 % z hrubé)`,a:soc,u:'Kč'},{l:`ZP (4,5 % z hrubé)`,a:zdr,u:'Kč'},{l:`Daň (15 % − 2570)`,a:d,u:'Kč'},{l:`Částka k výplatě (hrubá − srážky)`,a:c,u:'Kč'}],c:'castka_k_vyplate'};
 },
 function(){
-let g=rand(220,480)*100;
+let g=rand(300,500)*100;
 let soc=Math.round(g*0.071);
 let zdr=Math.round(g*0.045);
 let d=Math.round(g*0.15)-2570; if(d<0)d=0;
 let c=g-soc-zdr-d;
-let str=rand(500,2000);
-let puj=rand(1000,4000);
-let sraz=str+puj;
-let vys=c-sraz;
-return {q:`Hrubá mzda ${g} Kč.\nSrážky: stravenky ${str} Kč, půjčka ${puj} Kč.\nVypočítej částku k výplatě.\n(SP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570)`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'},{l:'Srážky celkem (stravenky + půjčka)',a:sraz,u:'Kč'},{l:'Částka k výplatě (čistá − srážky)',a:vys,u:'Kč'}],c:'castka_k_vyplate'};
+return {q:`Hrubá mzda ${g} Kč. Vypočítej, kolik dostane zaměstnanec na účet.`,f:[{l:`SP (7,1 % z hrubé)`,a:soc,u:'Kč'},{l:`ZP (4,5 % z hrubé)`,a:zdr,u:'Kč'},{l:`Daň (15 % − 2570)`,a:d,u:'Kč'},{l:`Částka k výplatě`,a:c,u:'Kč'}],c:'castka_k_vyplate'};
 },
 function(){
-let g=rand(280,520)*100;
+let g=rand(200,450)*100;
 let soc=Math.round(g*0.071);
 let zdr=Math.round(g*0.045);
 let d=Math.round(g*0.15)-2570; if(d<0)d=0;
 let c=g-soc-zdr-d;
-let sp=rand(1000,3000);
-let poj=rand(300,1200);
-let sraz=sp+poj;
-let vys=c-sraz;
-return {q:`Hrubá mzda ${g} Kč.\nSrážky: spoření ${sp} Kč, pojištění ${poj} Kč.\nVypočítej částku k výplatě.\n(SP 7,1 %, ZP 4,5 %, daň 15 %, sleva 2 570)`,f:[{l:'SP (7,1 % z hrubé)',a:soc,u:'Kč'},{l:'ZP (4,5 % z hrubé)',a:zdr,u:'Kč'},{l:'Daň (15 % z hrubé − 2570)',a:d,u:'Kč'},{l:'Čistá mzda (hrubá − SP − ZP − daň)',a:c,u:'Kč'},{l:'Srážky celkem (spoření + pojištění)',a:sraz,u:'Kč'},{l:'Částka k výplatě (čistá − srážky)',a:vys,u:'Kč'}],c:'castka_k_vyplate'};
-},
-function(){
-let c=rand(200,500)*100;
-let ex=rand(2000,8000);
-let vys=c-ex;
-return {q:`Čistá mzda zaměstnance je ${c} Kč. Má exekuční srážku ${ex} Kč. Kolik dostane k výplatě?`,f:[{l:'Čistá mzda (vstup)',a:c,u:'Kč'},{l:'Exekuční srážka',a:ex,u:'Kč'},{l:'Částka k výplatě (čistá − exekuce)',a:vys,u:'Kč'}],c:'castka_k_vyplate'};
+let ss=soc+zdr+d;
+return {q:`Hrubá mzda ${g} Kč.\nVypočítej srážky (SP, ZP, daň) a výslednou částku.`,f:[{l:`SP (7,1 % z hrubé)`,a:soc,u:'Kč'},{l:`ZP (4,5 % z hrubé)`,a:zdr,u:'Kč'},{l:`Daň (15 % − 2570)`,a:d,u:'Kč'},{l:`Částka k výplatě (hrubá − ${soc+zdr+d})`,a:c,u:'Kč'}],c:'castka_k_vyplate'};
 }
 ];
 
 // ---- DOVOLENÁ ----
 generators.dovolena = [
 function(){
-let d=rand(800,2500);
-let dni=rand(1,20);
-let ans=d*dni;
-return {q:`Průměrný denní výdělek ${d} Kč. Dovolená ${dni} dní. Vypočítej náhradu mzdy.`,f:[{l:'Náhrada mzdy (denní výdělek × dny)',a:ans,u:'Kč'}],c:'dovolena'};
+let m=rand(250,600)*100;
+let dn=rand(10,20);
+let ans=Math.round(m/22*dn);
+return {q:`Mzda ${m} Kč/měsíc. ${dn} dní dovolené (22 dní/měsíc). Náhrada?`,f:[{l:`Náhrada (mzda / 22 × ${dn})`,a:ans,u:'Kč'}],c:'dovolena'};
 },
 function(){
-let h=rand(120,300);
-let hod=rand(8,80);
-let ans=h*hod;
-return {q:`Průměrný hodinový výdělek ${h} Kč. Dovolená ${hod} hodin. Vypočítej náhradu.`,f:[{l:'Náhrada mzdy (hod. výdělek × hodiny)',a:ans,u:'Kč'}],c:'dovolena'};
+let d=rand(5,20);
+let h=rand(130,220);
+let ans=d*8*h;
+return {q:`${d} dní dovolené, hodinová sazba ${h} Kč (8h denně). Náhrada?`,f:[{l:`Náhrada (${d} × 8 × ${h})`,a:ans,u:'Kč'}],c:'dovolena'};
 },
 function(){
-let m=rand(300,600)*100;
-let dd=Math.round(m/22);
-let dni=rand(1,25);
-let ans=dd*dni;
-return {q:`Měsíční mzda ${m} Kč. Dovolená ${dni} dní. Prům. denní výdělek = ${m} / 22 = ${dd} Kč. Náhrada?`,f:[{l:'Náhrada mzdy (${dd} × ${dni} dní)',a:ans,u:'Kč'}],c:'dovolena'};
-},
-function(){
-let h=rand(130,280);
-let dni=rand(1,15);
-let ans=h*dni*8;
-return {q:`Průměrný hodinový výdělek ${h} Kč. Dovolená ${dni} dní (8h/den). Vypočítej náhradu.`,f:[{l:'Náhrada mzdy (${h} × ${dni} × 8h)',a:ans,u:'Kč'}],c:'dovolena'};
-},
-function(){
-let d=rand(900,2200);
-let dni=rand(2,10);
-let ms=rand(3,12);
-let nar=Math.max(1,Math.round(dni/12*ms));
-let ans=d*nar;
-return {q:`Roční nárok ${dni} dní. Odpracováno ${ms} měsíců → nárok na ${nar} dní. Denní průměr ${d} Kč. Náhrada?`,f:[{l:'Náhrada mzdy (denní × nárok)',a:ans,u:'Kč'}],c:'dovolena'};
+let hod=rand(150,250);
+let h=rand(140,170);
+let g=hod*h;
+let d=rand(3,10);
+let ans=Math.round(g/22*d);
+return {q:`Hrubá mzda ${g} Kč/měsíc. ${d} dny dovolené. Náhrada?`,f:[{l:`Náhrada (hrubá / 22 × ${d})`,a:ans,u:'Kč'}],c:'dovolena'};
 }
 ];
 
 // ---- NEMOCENSKÁ ----
 generators.nemocenska = [
 function(){
-let dvz=rand(800,2500);
-let dni=rand(1,14);
-let den=Math.round(dvz*0.6);
-let ans=den*dni;
-return {q:`DVZ ${dvz} Kč. Nemoc ${dni} dní (60 %). Vypočítej náhradu.`,f:[{l:'Denní náhrada (60 % z DVZ = ${dvz} × 60 %)',a:den,u:'Kč'},{l:'Náhrada celkem (denní × ${dni} dní)',a:ans,u:'Kč'}],c:'nemocenska'};
+let g=rand(250,500)*100;
+let dvz=Math.round(g/22);
+let ans=Math.round(dvz*0.6*5);
+return {q:`Hrubá mzda ${g} Kč/měs. 5 dní nemoc. DVZ = hrubá/22. Nemoc = 60 % DVZ × dny.`,f:[{l:`DVZ (hrubá / 22)`,a:dvz,u:'Kč'},{l:`Nemocenská (60 % × DVZ × 5 dní)`,a:ans,u:'Kč'}],c:'nemocenska'};
 },
 function(){
-let dvz=rand(900,2400);
-let dni=rand(1,30);
-let den=Math.round(dvz*0.6);
-let ans=den*dni;
-return {q:`DVZ ${dvz} Kč. Nemoc ${dni} dní. Náhrada 60 %. Vypočítej.`,f:[{l:'Denní náhrada (60 % z DVZ)',a:den,u:'Kč'},{l:'Náhrada celkem (denní × ${dni})',a:ans,u:'Kč'}],c:'nemocenska'};
+let g=rand(300,600)*100;
+let d=rand(3,10);
+let dvz=Math.round(g/22);
+let ans=Math.round(dvz*0.6*d);
+return {q:`Hrubá mzda ${g} Kč/měs. ${d} dní nemoci. Vypočítej nemocenskou.`,f:[{l:`DVZ (hrubá / 22)`,a:dvz,u:'Kč'},{l:`Nemocenská (60 % × DVZ × ${d})`,a:ans,u:'Kč'}],c:'nemocenska'};
 },
 function(){
-let dvz=rand(700,2000);
-let dni=rand(3,14);
-let den=Math.round(dvz*0.6);
-let ans=den*dni;
-return {q:`Redukovaný DVZ ${dvz} Kč. Nemoc ${dni} dní, 60 %. Náhrada?`,f:[{l:'Denní náhrada (60 % z DVZ)',a:den,u:'Kč'},{l:'Náhrada celkem (denní × ${dni})',a:ans,u:'Kč'}],c:'nemocenska'};
-},
-function(){
-let dvz=rand(1000,2600);
-let dni=rand(5,10);
-let den=Math.round(dvz*0.6);
-let ans=den*dni;
-return {q:`DVZ = ${dvz} Kč. Nemocenská 60 %, ${dni} dní.`,f:[{l:'Denní náhrada (60 % z DVZ)',a:den,u:'Kč'},{l:'Náhrada celkem (denní × ${dni})',a:ans,u:'Kč'}],c:'nemocenska'};
+let g=rand(200,450)*100;
+let d=rand(5,14);
+let dvz=Math.round(g/22);
+let ans=Math.round(dvz*0.6*d);
+return {q:`Mzda ${g} Kč, ${d} dní PN. DVZ = hrubá/22, nemoc = 60 % DVZ × dny.`,f:[{l:`DVZ (hrubá / 22)`,a:dvz,u:'Kč'},{l:`Nemocenská (60 % × DVZ × ${d})`,a:ans,u:'Kč'}],c:'nemocenska'};
 }
 ];
 
 // ---- STÍŽENÉ PRACOVNÍ PODMÍNKY ----
 generators.stizene_podminky = [
 function(){
-let g=rand(250,500)*100;
+let hod=rand(130,250);
+let h=rand(140,180);
+let g=hod*h;
 let p=rand(5,15);
 let ans=Math.round(g*p/100);
-return {q:`Hrubá mzda ${g} Kč, příplatek ${p} % za stížené podmínky. Vypočítej příplatek.`,f:[{l:'Příplatek (${p} % z ${g} Kč)',a:ans,u:'Kč'}],c:'stizene_podminky'};
-},
-function(){
-let hod=rand(140,280);
-let h=rand(80,160);
-let p=rand(5,20);
-let g=hod*h;
-let ans=Math.round(g*p/100);
-return {q:`Sazba ${hod} Kč/h, ${h} hodin, příplatek ${p} %. Vypočítej příplatek.`,f:[{l:'Hrubá mzda (základ, bez příplatku)',a:g,u:'Kč'},{l:'Příplatek (${p} % z hrubé mzdy)',a:ans,u:'Kč'}],c:'stizene_podminky'};
+return {q:`Sazba ${hod} Kč/h, ${h} hodin, příplatek ${p} %. Vypočítej příplatek.`,f:[{l:`Hrubá mzda (základ, bez příplatku)`,a:g,u:'Kč'},{l:`Příplatek (${p} % z hrubé mzdy)`,a:ans,u:'Kč'}],c:'stizene_podminky'};
 },
 function(){
 let g=rand(300,600)*100;
 let p=rand(8,18);
 let ans=Math.round(g*p/100);
-return {q:`Hrubá mzda ${g} Kč, příplatek ${p} % za rizikové pracoviště. Příplatek?`,f:[{l:'Příplatek (${p} % z hrubé mzdy)',a:ans,u:'Kč'}],c:'stizene_podminky'};
+return {q:`Hrubá mzda ${g} Kč, příplatek ${p} % za rizikové pracoviště. Příplatek?`,f:[{l:`Příplatek (${p} % z hrubé mzdy)`,a:ans,u:'Kč'}],c:'stizene_podminky'};
 },
 function(){
 let g=rand(200,450)*100;
 let p1=rand(5,10);
 let p2=rand(5,10);
 let ans=Math.round(g*(p1+p2)/100);
-return {q:`Hrubá mzda ${g} Kč. Příplatek ${p1} % (hluk) + ${p2} % (prašnost). Celkový příplatek?`,f:[{l:'Příplatek za hluk (${p1} % z ${g})',a:Math.round(g*p1/100),u:'Kč'},{l:'Příplatek za prašnost (${p2} % z ${g})',a:Math.round(g*p2/100),u:'Kč'},{l:'Příplatek celkem',a:ans,u:'Kč'}],c:'stizene_podminky'};
+return {q:`Hrubá mzda ${g} Kč. Příplatek ${p1} % (hluk) + ${p2} % (prašnost). Celkový příplatek?`,f:[{l:`Příplatek za hluk (${p1} % z ${g})`,a:Math.round(g*p1/100),u:'Kč'},{l:`Příplatek za prašnost (${p2} % z ${g})`,a:Math.round(g*p2/100),u:'Kč'},{l:`Příplatek celkem`,a:ans,u:'Kč'}],c:'stizene_podminky'};
 },
 function(){
 let hod=rand(130,250);
@@ -279,13 +221,13 @@ let h=rand(140,180);
 let g=hod*h;
 let p=rand(10,25);
 let ans=Math.round(g*p/100);
-return {q:`Sazba ${hod} Kč/h, ${h} hodin, příplatek ${p} % za ztížené podmínky.`,f:[{l:'Hrubá mzda (základ, bez příplatku)',a:g,u:'Kč'},{l:'Příplatek (${p} % z hrubé)',a:ans,u:'Kč'}],c:'stizene_podminky'};
+return {q:`Sazba ${hod} Kč/h, ${h} hodin, příplatek ${p} % za ztížené podmínky.`,f:[{l:`Hrubá mzda (základ, bez příplatku)`,a:g,u:'Kč'},{l:`Příplatek (${p} % z hrubé)`,a:ans,u:'Kč'}],c:'stizene_podminky'};
 },
 function(){
 let g=rand(250,550)*100;
 let p=rand(5,15);
 let ans=Math.round(g*p/100);
-return {q:`Hrubá mzda ${g} Kč. Práce ve výškách - příplatek ${p} %. Kolik navíc?`,f:[{l:'Příplatek (${p} % z ${g})',a:ans,u:'Kč'}],c:'stizene_podminky'};
+return {q:`Hrubá mzda ${g} Kč. Práce ve výškách - příplatek ${p} %. Kolik navíc?`,f:[{l:`Příplatek (${p} % z ${g})`,a:ans,u:'Kč'}],c:'stizene_podminky'};
 }
 ];
 
@@ -293,7 +235,7 @@ return {q:`Hrubá mzda ${g} Kč. Práce ve výškách - příplatek ${p} %. Koli
 let state = {
 questions:[], index:0, score:0, total:0,
 timeLimit:300, timeLeft:300, timerId:null, active:false,
-results:[]
+results:[], currentQuestion:null
 };
 
 // ===== DOM REFS =====
@@ -359,155 +301,123 @@ function showWelcome(){
 welcomeScreen.classList.add('active');
 gameScreen.classList.remove('active');
 resultScreen.classList.remove('active');
+$('calcBox').classList.remove('visible');
 }
 function showGame(){
 welcomeScreen.classList.remove('active');
 gameScreen.classList.add('active');
 resultScreen.classList.remove('active');
-}
-function showResultScreen(){
-welcomeScreen.classList.remove('active');
-gameScreen.classList.remove('active');
-resultScreen.classList.add('active');
+$('calcBox').classList.add('visible');
 }
 
 // ===== TEACHER REACTION =====
 function setTeacherReaction(r){
 reactionEmoji.textContent=r.emoji;
-reactionText.innerHTML=r.text+' <span class="reaction-sub">'+r.sub+'</span>';
-reactionEmoji.classList.remove('bounce');
-void reactionEmoji.offsetWidth;
-reactionEmoji.classList.add('bounce');
+reactionText.textContent=r.text;
+reactionSub.textContent=r.sub;
 }
 
-// ===== QUESTION POOL =====
+// ===== BUILD QUESTION POOL =====
 function buildQuestionPool(){
 const selected=[...catBtns].filter(b=>b.classList.contains('selected')).map(b=>b.dataset.cat);
-if(selected.length===0)return[];
 let pool=[];
 selected.forEach(cat=>{
-if(generators[cat]) generators[cat].forEach(fn=>pool.push({fn,cat}));
+if(generators[cat]) pool=pool.concat(generators[cat]);
 });
-let qs=[];
-pool.forEach(item=>{
-let cnt=rand(1,2);
-for(let i=0;i<cnt;i++){
-let q=item.fn();
-qs.push({question:q.q,fields:q.f,c:q.c});
-}
-});
-for(let i=qs.length-1;i>0;i--){let j=rand(0,i);[qs[i],qs[j]]=[qs[j],qs[i]];}
-return qs;
+pool.sort(()=>Math.random()-.5);
+return pool;
 }
 
 // ===== RENDER QUESTION =====
 function renderQuestion(){
-if(!state.active) return;
-if(state.index>=state.questions.length){endGame();return;}
-const q=state.questions[state.index];
-questionBox.textContent=q.question;
+const gen=state.questions[state.index];
+if(!gen){alert('Chyba: otázka nenalezena.');return;}
+const q=gen();
+state.currentQuestion=q;
+questionBox.textContent=q.q;
 fieldsContainer.innerHTML='';
-q.fields.forEach((f,i)=>{
+q.f.forEach((f,i)=>{
 const row=document.createElement('div');
 row.className='field-row';
 const lbl=document.createElement('label');
-lbl.textContent=f.l;
+lbl.textContent=f.l+':';
 const inp=document.createElement('input');
-inp.type='number';
-inp.id='qf_'+i;
-inp.dataset.answer=f.a;
-inp.placeholder='0';
+inp.type='text';inp.inputMode='decimal';inp.dataset.idx=i;
+inp.addEventListener('keydown',e=>{
+if(e.key==='Enter'&&!submitBtn.disabled) checkAnswer();
+});
 const unit=document.createElement('span');
 unit.className='field-unit';
 unit.textContent=f.u;
 const chk=document.createElement('span');
 chk.className='field-check';
-row.appendChild(lbl);
-row.appendChild(inp);
-row.appendChild(unit);
-row.appendChild(chk);
+row.append(lbl,inp,unit,chk);
 fieldsContainer.appendChild(row);
 });
-progressFill.style.width=((state.index/state.questions.length)*100)+'%';
-scoreDisplay.textContent=state.score+'/'+state.total;
+if(q.f.length>0) fieldsContainer.querySelector('input').focus();
 submitBtn.disabled=false;
 answerFeedback.textContent='';
 answerFeedback.className='answer-feedback';
-// focus first field
-const first=q.fields.length>0?document.getElementById('qf_0'):null;
-if(first) setTimeout(()=>first.focus(),100);
 }
 
 // ===== CHECK ANSWER =====
 function checkAnswer(){
 if(!state.active||submitBtn.disabled) return;
-const q=state.questions[state.index];
+const q=state.currentQuestion;
+const inputs=fieldsContainer.querySelectorAll('input');
+let empty=false;
+inputs.forEach(inp=>{if(!inp.value.trim())empty=true});
+if(empty){answerFeedback.textContent='✏️ Nejprve vyplň všechna políčka!';answerFeedback.className='answer-feedback wrong';return;}
 let allCorrect=true;
-const checker=(val,ans)=>{
-let t=1;
-if(Math.abs(ans)>=10000)t=5; else if(Math.abs(ans)>=1000)t=2;
-return Math.abs(val-ans)<=t;
-};
-q.fields.forEach((f,i)=>{
-const inp=document.getElementById('qf_'+i);
+inputs.forEach((inp,i)=>{
+const val=parseFloat(inp.value.replace(',','.'));
+const correct=Math.abs(val-q.f[i].a)<.01;
 const chk=inp.parentElement.querySelector('.field-check');
-const val=parseFloat(inp.value);
-if(isNaN(val)){
-inp.className='wrong'; chk.textContent='❌'; allCorrect=false;
-}else if(checker(val,f.a)){
-inp.className='correct'; chk.textContent='✅';
-}else{
-inp.className='wrong'; chk.textContent='❌'; allCorrect=false;
-}
-});
-state.answered++;
-if(allCorrect){
-state.score++;
-setTeacherReaction(pick(R_CORRECT));
-answerFeedback.textContent='✅ Všechny políčka správně!';
-answerFeedback.className='answer-feedback correct';
-state.results.push({q:q.question,correct:true});
-}else{
-setTeacherReaction(pick(R_WRONG));
-answerFeedback.textContent='❌ Některá políčka jsou špatně. Správné hodnoty jsou zvýrazněny.';
-answerFeedback.className='answer-feedback wrong';
-// show correct answers
-q.fields.forEach((f,i)=>{
-const inp=document.getElementById('qf_'+i);
-const chk=inp.parentElement.querySelector('.field-check');
-if(inp.className!=='correct'){
-inp.value=f.a;
+const unit=inp.parentElement.querySelector('.field-unit');
+if(correct){
+inp.className='correct';
 chk.textContent='✅';
+}else{
+inp.className='wrong';
+chk.textContent='❌';
+const correctLabel=q.f[i].a+''+(unit?unit.textContent:'');
+inp.placeholder='Správně: '+correctLabel;
+allCorrect=false;
 }
 });
-state.results.push({q:q.question,correct:false});
-}
 submitBtn.disabled=true;
+state.answered++;
+if(allCorrect) state.score++;
+const reaction=allCorrect?pick(R_CORRECT):pick(R_WRONG);
+setTeacherReaction(reaction);
+answerFeedback.textContent=allCorrect?'✅ Správně!':'❌ '+q.f.map((f,i)=>{
+const val=parseFloat(inputs[i].value.replace(',','.'));
+const ok=Math.abs(val-f.a)<.01;
+return ok?'✓ '+f.l+' = '+f.a:'✗ '+f.l+' = '+f.a+' (tvůj: '+inputs[i].value+')';
+}).join('; ');
+answerFeedback.className='answer-feedback '+(allCorrect?'correct':'wrong');
+state.results.push({q:q.q,correct:allCorrect});
+const pct=Math.round(state.answered/state.total*100);
+progressFill.style.width=pct+'%';
+scoreDisplay.textContent=state.score+'/'+state.total;
+if(state.index+1<state.questions.length){
+setTimeout(()=>{
 state.index++;
-setTimeout(()=>{if(state.active)renderQuestion();},1500);
+renderQuestion();
+},1500);
+}else{
+setTimeout(showResults,1500);
+}
 }
 
-// ===== TIMER =====
-function updateTimerDisplay(){
-let m=Math.floor(state.timeLeft/60),s=state.timeLeft%60;
-timerDisplay.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
-timerDisplay.classList.toggle('warning',state.timeLeft<=30);
-}
-function startTimer(){
-updateTimerDisplay();
-state.timerId=setInterval(()=>{
-state.timeLeft--;
-updateTimerDisplay();
-if(state.timeLeft<=0) endGame();
-},1000);
-}
-
-// ===== END GAME =====
-function endGame(){
-if(!state.active) return;
+// ===== SHOW RESULTS =====
+function showResults(){
 state.active=false;
 if(state.timerId){clearInterval(state.timerId);state.timerId=null;}
-showResultScreen();
+$('calcBox').classList.remove('visible');
+welcomeScreen.classList.remove('active');
+gameScreen.classList.remove('active');
+resultScreen.classList.add('active');
 const pct=state.total>0?Math.round(state.score/state.total*100):0;
 statScore.textContent=state.score;
 statTotal.textContent=state.total;
@@ -530,10 +440,31 @@ detailList.appendChild(d);
 });
 }
 
+// ===== TIMER =====
+function startTimer(){
+state.timerId=setInterval(()=>{
+state.timeLeft--;
+const m=String(Math.floor(state.timeLeft/60)).padStart(2,'0');
+const s=String(state.timeLeft%60).padStart(2,'0');
+timerDisplay.textContent=m+':'+s;
+if(state.timeLeft<=10) timerDisplay.classList.add('warning');
+if(state.timeLeft<=0){
+clearInterval(state.timerId);
+state.timerId=null;
+state.active=false;
+showResults();
+}
+},1000);
+}
+
 // ===== INIT GAME =====
 function initGame(){
 const selected=[...catBtns].filter(b=>b.classList.contains('selected')).map(b=>b.dataset.cat);
-if(selected.length===0){alert('Vyber alespoň jednu kategorii!');return;}
+if(selected.length===0){
+startBtn.classList.add('shake');
+setTimeout(()=>startBtn.classList.remove('shake'),600);
+return;
+}
 const tb=document.querySelector('.time-btn.selected');
 state.timeLimit=parseInt(tb.dataset.time);
 state.timeLeft=state.timeLimit;
@@ -579,15 +510,8 @@ checkAnswer();
 
 // ===== CALCULATOR =====
 (function(){
-const toggle=$('calcToggle');
-const box=$('calcBox');
 const display=$('calcDisplay');
 let a='',op='',b='',reset=false;
-toggle.addEventListener('click',()=>{
-box.classList.toggle('open');
-toggle.classList.toggle('open');
-toggle.textContent=box.classList.contains('open')?'🧮 Kalkulačka ▾':'🧮 Kalkulačka ▸';
-});
 document.querySelectorAll('.calc-btn').forEach(btn=>{
 btn.addEventListener('click',()=>{
 const val=btn.dataset.calc;

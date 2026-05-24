@@ -199,6 +199,8 @@ box-shadow:0 8px 32px rgba(139,92,246,.4);
 .start-btn:active,.restart-btn:active{transform:translateY(0)}
 .start-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;animation:none}
 .start-btn:disabled::after{display:none}
+@keyframes shake{0%,100%{transform:translateX(0)}10%,30%,50%,70%,90%{transform:translateX(-6px)}20%,40%,60%,80%{transform:translateX(6px)}}
+.start-btn.shake{animation:shake .5s ease}
 
 /* GAME TOP */
 .game-top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px}
@@ -338,34 +340,20 @@ background:rgba(139,92,246,.04);
 .notes-area textarea::placeholder{color:var(--textDim);opacity:.5}
 
 /* CALCULATOR */
-.calc-wrap{margin-top:12px}
-.calc-toggle{
-padding:6px 14px;
-border:1px solid rgba(255,255,255,.1);
-border-radius:8px;
-background:rgba(255,255,255,.04);
-cursor:pointer;
-font-weight:600;font-size:13px;
-color:var(--textDim);
-transition:all .25s;
-display:inline-flex;align-items:center;gap:6px;
-}
-.calc-toggle:hover{
-border-color:rgba(139,92,246,.4);
-color:#c4b0e8;
-background:rgba(139,92,246,.08);
-}
-.calc-toggle.open{border-color:rgba(139,92,246,.3);color:var(--text)}
+.game-main{margin-top:10px}
 .calc-box{
 display:none;
-margin-top:8px;
+position:fixed;top:20px;right:20px;z-index:100;
+width:220px;
 padding:12px;
-background:rgba(0,0,0,.25);
-border:1px solid rgba(255,255,255,.06);
-border-radius:12px;
-max-width:280px;
+background:rgba(10,6,25,.85);
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:14px;
+box-shadow:0 8px 32px rgba(0,0,0,.5);
 }
-.calc-box.open{display:block;animation:fadeIn .2s ease}
+.calc-box.visible{display:block}
 .calc-display{
 width:100%;padding:10px 12px;
 background:rgba(0,0,0,.3);
@@ -477,4 +465,5 @@ font-size:13px;gap:8px;
 .field-row label{min-width:auto}
 .field-row input{text-align:left}
 .time-btn{min-width:60px}
+.calc-box.visible{position:fixed;top:auto;bottom:0;right:0;left:0;width:100%;border-radius:14px 14px 0 0;max-height:300px;overflow-y:auto}
 }
