@@ -577,5 +577,75 @@ if(e.key==='Enter'&&gameScreen.classList.contains('active')&&!submitBtn.disabled
 checkAnswer();
 });
 
+// ===== CALCULATOR =====
+(function(){
+const toggle=$('calcToggle');
+const box=$('calcBox');
+const display=$('calcDisplay');
+let a='',op='',b='',reset=false;
+toggle.addEventListener('click',()=>{
+box.classList.toggle('open');
+toggle.classList.toggle('open');
+toggle.textContent=box.classList.contains('open')?'🧮 Kalkulačka ▾':'🧮 Kalkulačka ▸';
+});
+document.querySelectorAll('.calc-btn').forEach(btn=>{
+btn.addEventListener('click',()=>{
+const val=btn.dataset.calc;
+if(val==='C'){a='';op='';b='';display.textContent='0';reset=false;return;}
+if(val==='←'){
+if(b){b=b.slice(0,-1);display.textContent=b||'0';}
+else if(op){op='';display.textContent=a||'0';}
+else{a=a.slice(0,-1);display.textContent=a||'0';}
+return;
+}
+if(val==='='){
+if(!a||!op||!b) return;
+const ca=parseFloat(a),cb=parseFloat(b);
+let r;
+switch(op){
+case'+':r=ca+cb;break;
+case'-':r=ca-cb;break;
+case'*':r=ca*cb;break;
+case'/':r=cb!==0?ca/cb:'Chyba';break;
+}
+if(r==='Chyba'){display.textContent='Dělení nulou!';a='';op='';b='';reset=false;return;}
+r=Math.round(r*100)/100;
+display.textContent=r;
+a=String(r);op='';b='';reset=true;
+return;
+}
+if(['+','-','*','/'].includes(val)){
+if(a&&op&&b){
+const ca=parseFloat(a),cb=parseFloat(b);
+let r;
+switch(op){
+case'+':r=ca+cb;break;
+case'-':r=ca-cb;break;
+case'*':r=ca*cb;break;
+case'/':r=cb!==0?ca/cb:'Chyba';break;
+}
+if(r==='Chyba'){display.textContent='Dělení nulou!';a='';op='';b='';return;}
+r=Math.round(r*100)/100;
+a=String(r);b='';
+}
+op=val;
+display.textContent=a+' '+op;
+reset=false;
+return;
+}
+if(val==='.'){
+if(reset||(!op&&!a)){a='0.';display.textContent=a;reset=false;return;}
+if(!op&&a){if(!a.includes('.'))a+='.';display.textContent=a;return;}
+if(op&&!b){b='0.';display.textContent=a+' '+op+' '+b;return;}
+if(op&&b){if(!b.includes('.'))b+='.';display.textContent=a+' '+op+' '+b;return;}
+return;
+}
+if(reset){a='';b='';op='';reset=false;}
+if(!op){a+=val;display.textContent=a;}
+else{b+=val;display.textContent=a+' '+op+' '+b;}
+});
+});
+})();
+
 // ===== START =====
 showWelcome();

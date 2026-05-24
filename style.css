@@ -337,6 +337,78 @@ background:rgba(139,92,246,.04);
 }
 .notes-area textarea::placeholder{color:var(--textDim);opacity:.5}
 
+/* CALCULATOR */
+.calc-wrap{margin-top:12px}
+.calc-toggle{
+padding:6px 14px;
+border:1px solid rgba(255,255,255,.1);
+border-radius:8px;
+background:rgba(255,255,255,.04);
+cursor:pointer;
+font-weight:600;font-size:13px;
+color:var(--textDim);
+transition:all .25s;
+display:inline-flex;align-items:center;gap:6px;
+}
+.calc-toggle:hover{
+border-color:rgba(139,92,246,.4);
+color:#c4b0e8;
+background:rgba(139,92,246,.08);
+}
+.calc-toggle.open{border-color:rgba(139,92,246,.3);color:var(--text)}
+.calc-box{
+display:none;
+margin-top:8px;
+padding:12px;
+background:rgba(0,0,0,.25);
+border:1px solid rgba(255,255,255,.06);
+border-radius:12px;
+max-width:280px;
+}
+.calc-box.open{display:block;animation:fadeIn .2s ease}
+.calc-display{
+width:100%;padding:10px 12px;
+background:rgba(0,0,0,.3);
+border:1px solid rgba(255,255,255,.06);
+border-radius:8px;
+font-size:22px;font-weight:700;
+text-align:right;
+color:#fff;
+margin-bottom:8px;
+min-height:46px;
+overflow:hidden;
+font-family:monospace;
+letter-spacing:1px;
+}
+.calc-btns{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.calc-btn{
+padding:10px 0;
+border:1px solid rgba(255,255,255,.06);
+border-radius:8px;
+background:rgba(255,255,255,.06);
+cursor:pointer;
+font-weight:700;font-size:16px;
+color:var(--text);
+transition:all .15s;
+text-align:center;
+user-select:none;
+}
+.calc-btn:hover{
+background:rgba(255,255,255,.12);
+border-color:rgba(139,92,246,.3);
+}
+.calc-btn:active{transform:scale(.94)}
+.calc-op{color:var(--holo2);background:rgba(0,212,255,.08)}
+.calc-op:hover{background:rgba(0,212,255,.16)}
+.calc-eq{color:#fff;background:linear-gradient(135deg,rgba(139,92,246,.5),rgba(0,212,255,.3));grid-row:span 2}
+.calc-eq:hover{background:linear-gradient(135deg,rgba(139,92,246,.7),rgba(0,212,255,.4))}
+.calc-clear{color:#ff6b7a;background:rgba(255,71,87,.08)}
+.calc-clear:hover{background:rgba(255,71,87,.16)}
+.calc-bspace{color:var(--textDim);background:rgba(255,255,255,.04)}
+.calc-bspace:hover{background:rgba(255,255,255,.1)}
+.calc-dot{color:var(--text)}
+.calc-zero{grid-column:span 2}
+
 /* RESULTS */
 .result-header{text-align:center;margin-bottom:16px}
 .result-header .teacher-emoji{font-size:80px;filter:drop-shadow(0 0 16px rgba(139,92,246,.3))}
