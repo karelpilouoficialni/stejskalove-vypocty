@@ -1,138 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Počítání mezd </title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Počítání mezd</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container" id="app">
+      <!-- WELCOME SCREEN -->
+      <div class="screen active" id="welcomeScreen">
+        <div class="teacher-box">
+          <span class="teacher-emoji">👩‍🏫</span>
+          <div class="teacher-name">Dana Stejskalová</div>
+          <div class="teacher-sub">
+            učitelka ekonomiky a profesionální mrdka
+          </div>
+        </div>
+        <div class="welcome-title">Počítání mezd</div>
+        <div class="welcome-sub">
+          Vyber, co chceš procvičovat, a začni hrát!
+        </div>
 
-<div class="container" id="app">
+        <div class="cat-grid" id="categoryGrid">
+          <button class="cat-btn all-btn" data-cat="all">
+            <span class="cat-icon">📋</span> Všechny kategorie
+          </button>
+          <button class="cat-btn" data-cat="hruba_mzda">
+            <span class="cat-icon">💰</span> Hrubá mzda
+          </button>
+          <button class="cat-btn" data-cat="cista_mzda">
+            <span class="cat-icon">🧾</span> Čistá mzda
+          </button>
+          <button class="cat-btn" data-cat="castka_k_vyplate">
+            <span class="cat-icon">💳</span> Částka k výplatě
+          </button>
+          <button class="cat-btn" data-cat="dovolena">
+            <span class="cat-icon">🏖️</span> Dovolená
+          </button>
+          <button class="cat-btn" data-cat="nemocenska">
+            <span class="cat-icon">🤒</span> Nemocenská
+          </button>
+          <button class="cat-btn" data-cat="stizene_podminky">
+            <span class="cat-icon">⚠️</span> Stížené pracovní podmínky
+          </button>
+        </div>
 
-<!-- WELCOME SCREEN -->
-<div class="screen active" id="welcomeScreen">
-<div class="teacher-box">
-<span class="teacher-emoji">👩‍🏫</span>
-<div class="teacher-name">Dana Stejskalová</div>
-<div class="teacher-sub">učitelka ekonomiky a profesionální mrdka</div>
-</div>
-<div class="welcome-title">Počítání mezd</div>
-<div class="welcome-sub">Vyber, co chceš procvičovat, a začni hrát!</div>
+        <div class="time-row">
+          <button class="time-btn" data-time="120">⏱ 2 min</button>
+          <button class="time-btn selected" data-time="300">⏱ 5 min</button>
+          <button class="time-btn" data-time="600">⏱ 10 min</button>
+          <button class="time-btn" data-time="0">♾️ Neomezeně</button>
+        </div>
 
-<div class="cat-grid" id="categoryGrid">
-<button class="cat-btn all-btn" data-cat="all"><span class="cat-icon">📋</span> Všechny kategorie</button>
-<button class="cat-btn" data-cat="hruba_mzda"><span class="cat-icon">💰</span> Hrubá mzda</button>
-<button class="cat-btn" data-cat="cista_mzda"><span class="cat-icon">🧾</span> Čistá mzda</button>
-<button class="cat-btn" data-cat="castka_k_vyplate"><span class="cat-icon">💳</span> Částka k výplatě</button>
-<button class="cat-btn" data-cat="dovolena"><span class="cat-icon">🏖️</span> Dovolená</button>
-<button class="cat-btn" data-cat="nemocenska"><span class="cat-icon">🤒</span> Nemocenská</button>
-<button class="cat-btn" data-cat="stizene_podminky"><span class="cat-icon">⚠️</span> Stížené pracovní podmínky</button>
-</div>
+        <div class="count-row">
+          <label class="count-label">📊 Počet příkladů:</label>
+          <div class="count-btns">
+            <button class="count-btn" data-count="5">5</button>
+            <button class="count-btn" data-count="10">10</button>
+            <button class="count-btn selected" data-count="15">15</button>
+            <button class="count-btn" data-count="20">20</button>
+            <button class="count-btn" data-count="30">30</button>
+          </div>
+        </div>
 
-<div class="time-row">
-<button class="time-btn" data-time="120">⏱ 2 min</button>
-<button class="time-btn selected" data-time="300">⏱ 5 min</button>
-<button class="time-btn" data-time="600">⏱ 10 min</button>
-<button class="time-btn" data-time="0">♾️ Neomezeně</button>
-</div>
+        <button
+          class="start-btn"
+          id="startBtn"
+          onclick="
+            var b = this;
+            if (
+              document.querySelectorAll('.cat-btn:not(.all-btn).selected')
+                .length === 0
+            ) {
+              b.classList.add('shake');
+              b.textContent = '❌ Vyber alespoň jednu kategorii!';
+              setTimeout(function () {
+                b.classList.remove('shake');
+              }, 1000);
+              setTimeout(function () {
+                b.textContent = 'Začít hru!';
+              }, 2000);
+              return false;
+            }
+            initGame();
+          "
+        >
+          Začít hru!
+        </button>
+      </div>
 
-<div class="count-row">
-<label class="count-label">📊 Počet příkladů:</label>
-<div class="count-btns">
-<button class="count-btn" data-count="5">5</button>
-<button class="count-btn" data-count="10">10</button>
-<button class="count-btn selected" data-count="15">15</button>
-<button class="count-btn" data-count="20">20</button>
-<button class="count-btn" data-count="30">30</button>
-</div>
-</div>
+      <!-- GAME SCREEN -->
+      <div class="screen" id="gameScreen">
+        <div class="game-top-bar">
+          <button class="back-btn" id="backMenuBtn">← Zpět do menu</button>
+          <div class="game-header">
+            <div class="game-stat">
+              Skóre: <span id="scoreDisplay">0/0</span>
+            </div>
+            <div class="timer" id="timerDisplay">05:00</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
 
-<button class="start-btn" id="startBtn" onclick="var b=this;if(document.querySelectorAll('.cat-btn:not(.all-btn).selected').length===0){b.classList.add('shake');b.textContent='❌ Vyber alespoň jednu kategorii!';setTimeout(function(){b.classList.remove('shake');},1000);setTimeout(function(){b.textContent='Začít hru!';},2000);return false}initGame()">Začít hru!</button>
-</div>
+        <div class="reaction-area" id="reactionArea">
+          <span class="reaction-emoji" id="reactionEmoji">😊</span>
+          <div class="reaction-text" id="reactionText">
+            Hodně štěstí!
+            <span class="reaction-sub" id="reactionSub">Začínáme!</span>
+          </div>
+        </div>
 
-<!-- GAME SCREEN -->
-<div class="screen" id="gameScreen">
-<div class="game-top-bar">
-<button class="back-btn" id="backMenuBtn">← Zpět do menu</button>
-<div class="game-header">
-<div class="game-stat">Skóre: <span id="scoreDisplay">0/0</span></div>
-<div class="timer" id="timerDisplay">05:00</div>
-</div>
-</div>
-<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="game-main">
+          <div class="game-left">
+            <div class="question-box" id="questionBox">Načítání otázky...</div>
 
-<div class="reaction-area" id="reactionArea">
-<span class="reaction-emoji" id="reactionEmoji">😊</span>
-<div class="reaction-text" id="reactionText">
-Hodně štěstí!
-<span class="reaction-sub" id="reactionSub">Začínáme!</span>
-</div>
-</div>
+            <div class="fields-container" id="fieldsContainer"></div>
 
-<div class="game-main">
-<div class="game-left">
-<div class="question-box" id="questionBox">
-Načítání otázky...
-</div>
+            <div class="answer-row">
+              <button id="submitBtn">Zkontrolovat</button>
+            </div>
+            <div class="answer-feedback" id="answerFeedback"></div>
 
-<div class="fields-container" id="fieldsContainer"></div>
+            <div class="notes-area">
+              <label for="notesInput">📝 Poznámky (neukládají se):</label>
+              <textarea
+                id="notesInput"
+                placeholder="Sem si můžeš psát pomocné výpočty, poznámky..."
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<div class="answer-row">
-<button id="submitBtn">Zkontrolovat</button>
-</div>
-<div class="answer-feedback" id="answerFeedback"></div>
+      <!-- RESULTS SCREEN -->
+      <div class="screen" id="resultScreen">
+        <div class="result-header">
+          <span class="teacher-emoji" id="resultEmoji">😊</span>
+          <div class="result-title" id="resultTitle">Výborně!</div>
+          <div class="result-sub" id="resultSub">Tvůj výsledek</div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-num" id="statScore">0</div>
+            <div class="stat-label">Správně</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" id="statTotal">0</div>
+            <div class="stat-label">Celkem</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" id="statPercent">0%</div>
+            <div class="stat-label">Úspěšnost</div>
+          </div>
+        </div>
+        <div class="detail-list" id="detailList"></div>
+        <button class="restart-btn" id="restartBtn">Hrát znovu</button>
+      </div>
+    </div>
+    <!-- /container -->
 
-<div class="notes-area">
-<label for="notesInput">📝 Poznámky (neukládají se):</label>
-<textarea id="notesInput" placeholder="Sem si můžeš psát pomocné výpočty, poznámky..."></textarea>
-</div>
-</div>
-</div>
-</div>
+    <div class="calc-box" id="calcBox">
+      <div class="calc-display" id="calcDisplay">0</div>
+      <div class="calc-btns">
+        <button class="calc-btn calc-clear" data-calc="C">C</button>
+        <button class="calc-btn calc-bspace" data-calc="←">⌫</button>
+        <button class="calc-btn calc-op" data-calc="/">÷</button>
+        <button class="calc-btn calc-op" data-calc="*">×</button>
+        <button class="calc-btn calc-num" data-calc="7">7</button>
+        <button class="calc-btn calc-num" data-calc="8">8</button>
+        <button class="calc-btn calc-num" data-calc="9">9</button>
+        <button class="calc-btn calc-op" data-calc="-">−</button>
+        <button class="calc-btn calc-num" data-calc="4">4</button>
+        <button class="calc-btn calc-num" data-calc="5">5</button>
+        <button class="calc-btn calc-num" data-calc="6">6</button>
+        <button class="calc-btn calc-op" data-calc="+">+</button>
+        <button class="calc-btn calc-num" data-calc="1">1</button>
+        <button class="calc-btn calc-num" data-calc="2">2</button>
+        <button class="calc-btn calc-num" data-calc="3">3</button>
+        <button class="calc-btn calc-eq" data-calc="=">=</button>
+        <button class="calc-btn calc-num calc-zero" data-calc="0">0</button>
+        <button class="calc-btn calc-dot" data-calc=".">.</button>
+      </div>
+    </div>
 
-<!-- RESULTS SCREEN -->
-<div class="screen" id="resultScreen">
-<div class="result-header">
-<span class="teacher-emoji" id="resultEmoji">😊</span>
-<div class="result-title" id="resultTitle">Výborně!</div>
-<div class="result-sub" id="resultSub">Tvůj výsledek</div>
-</div>
-<div class="stats-grid">
-<div class="stat-card"><div class="stat-num" id="statScore">0</div><div class="stat-label">Správně</div></div>
-<div class="stat-card"><div class="stat-num" id="statTotal">0</div><div class="stat-label">Celkem</div></div>
-<div class="stat-card"><div class="stat-num" id="statPercent">0%</div><div class="stat-label">Úspěšnost</div></div>
-</div>
-<div class="detail-list" id="detailList"></div>
-<button class="restart-btn" id="restartBtn">Hrát znovu</button>
-</div>
-
-</div><!-- /container -->
-
-<div class="calc-box" id="calcBox">
-<div class="calc-display" id="calcDisplay">0</div>
-<div class="calc-btns">
-<button class="calc-btn calc-clear" data-calc="C">C</button>
-<button class="calc-btn calc-bspace" data-calc="←">⌫</button>
-<button class="calc-btn calc-op" data-calc="/">÷</button>
-<button class="calc-btn calc-op" data-calc="*">×</button>
-<button class="calc-btn calc-num" data-calc="7">7</button>
-<button class="calc-btn calc-num" data-calc="8">8</button>
-<button class="calc-btn calc-num" data-calc="9">9</button>
-<button class="calc-btn calc-op" data-calc="-">−</button>
-<button class="calc-btn calc-num" data-calc="4">4</button>
-<button class="calc-btn calc-num" data-calc="5">5</button>
-<button class="calc-btn calc-num" data-calc="6">6</button>
-<button class="calc-btn calc-op" data-calc="+">+</button>
-<button class="calc-btn calc-num" data-calc="1">1</button>
-<button class="calc-btn calc-num" data-calc="2">2</button>
-<button class="calc-btn calc-num" data-calc="3">3</button>
-<button class="calc-btn calc-eq" data-calc="=">=</button>
-<button class="calc-btn calc-num calc-zero" data-calc="0">0</button>
-<button class="calc-btn calc-dot" data-calc=".">.</button>
-</div>
-</div>
-
-<script src="script.js?v=8"></script>
-</body>
+    <script src="script.js?v=8"></script>
+  </body>
 </html>
